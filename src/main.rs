@@ -115,8 +115,8 @@ fn main() -> io::Result<()> {
     'outer: loop {
         let operation: MathOperation = rng.sample(MathOperationDistribution {});
 
-        let first_number: MathNumber = rng.sample(MathNumberDistribution::easy());
-        let second_number: MathNumber = rng.sample(MathNumberDistribution::easy());
+        let first_number: MathNumber = rng.sample(MathNumberDistribution::default());
+        let second_number: MathNumber = rng.sample(MathNumberDistribution::default());
 
         let result = solve_math_operation(first_number, operation, second_number);
 
