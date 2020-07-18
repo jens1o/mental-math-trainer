@@ -1,0 +1,11 @@
+[package]
+name = "mental-math-trainer"
+version = "0.1.0"
+authors = ["Jens Hausdorf <mail@jens-hausdorf.de>"]
+edition = "2018"
+license = "GPL"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+rand = "^0.7"
