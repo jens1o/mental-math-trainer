@@ -5,7 +5,7 @@ use std::fmt;
 use std::io::{self, Write};
 use std::ops;
 
-#[derive(Copy, Clone)]
+#[derive(Copy, Clone, PartialEq)]
 enum MathOperation {
     Addition,
     Subtraction,
@@ -48,7 +48,7 @@ impl rand::distributions::Distribution<MathOperation> for MathOperationDistribut
 
 #[derive(Copy, Clone)]
 struct MathNumber {
-    value: i8,
+    pub value: i8,
 }
 
 impl fmt::Display for MathNumber {
@@ -116,7 +116,19 @@ fn main() -> io::Result<()> {
         let operation: MathOperation = rng.sample(MathOperationDistribution {});
 
         let first_number: MathNumber = rng.sample(MathNumberDistribution::default());
-        let second_number: MathNumber = rng.sample(MathNumberDistribution::default());
+
+        let mut second_number: MathNumber;
+
+        loop {
+            second_number = rng.sample(MathNumberDistribution::default());
+
+            // avoid division by zero
+            if operation == MathOperation::Division && second_number.value == 0 {
+                continue;
+            } else {
+                break;
+            }
+        }
 
         let result = solve_math_operation(first_number, operation, second_number);
 
