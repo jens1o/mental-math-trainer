@@ -34,7 +34,7 @@ struct MathOperationDistribution {}
 
 impl rand::distributions::Distribution<MathOperation> for MathOperationDistribution {
     fn sample<R: Rng + ?Sized>(&self, rng: &mut R) -> MathOperation {
-        let rand_int: u8 = rng.gen_range(0, 4);
+        let rand_int: u8 = rng.gen_range(0..4);
 
         match rand_int {
             0 => MathOperation::Addition,
@@ -97,7 +97,7 @@ impl MathNumberDistribution {
 
 impl rand::distributions::Distribution<MathNumber> for MathNumberDistribution {
     fn sample<R: Rng + ?Sized>(&self, rng: &mut R) -> MathNumber {
-        let value: i8 = rng.gen_range(self.range.start, self.range.end);
+        let value: i8 = rng.gen_range(self.range.clone());
 
         MathNumber { value }
     }
