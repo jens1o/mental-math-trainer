@@ -79,12 +79,12 @@ impl Default for MathNumberDistribution {
 impl MathNumberDistribution {
     #[allow(unused)]
     fn easy() -> MathNumberDistribution {
-        MathNumberDistribution { range: (-10..20) }
+        MathNumberDistribution { range: (-10..21) }
     }
 
     #[allow(unused)]
     fn normal() -> MathNumberDistribution {
-        MathNumberDistribution { range: (-30..30) }
+        MathNumberDistribution { range: (-20..21) }
     }
 
     #[allow(unused)]
